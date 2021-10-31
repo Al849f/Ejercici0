@@ -1,0 +1,80 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector <string> split_sentence(const string& arg)
+{
+
+    vector <string> ret;
+
+    auto it = arg.begin();
+    while (it != arg.end()) {
+
+        string tmp;
+
+        while (it != arg.end() && *it == ' ') ++it;
+        while (it != arg.end() && *it != ' ')
+            tmp += *it++;
+
+        if (tmp.size())
+            ret.push_back(tmp);
+    }
+
+    return ret;
+}
+
+int main(int argc, char *argv[])
+{
+    string input = "Texto ingresado .";
+
+    string ENG[4] = {"Texto Ingresado
+int main(){
+string continuar;
+cout<<"Desea continuar si/no :";
+cin>>continuar;
+if (continuar=="si"){
+cout<<"Gracias.."<<endl;
+}else{
+exit(1);
+}
+return 0;
+}"};
+    string SPA[4] = {"entero principal (){
+cadena continuar;
+cout<<"Desea continuar si/no :";
+cin>>continuar;
+si (continuar=="si") inicio si
+cout<<"Gracias.."<<finalizar;
+fin si
+entonces inicio entonces
+salir(1);
+fin entonces
+retorno 0;
+}
+"};
+
+    cout << "Enter sentence\n";
+    /*
+        cin >> input;
+    */
+
+    for (auto& str: split_sentence(input)) {
+
+        bool found = false;
+
+        for (int j=0; j<4 && !found; ++j) {
+
+            if (ENG[j] == str) {
+                cout << SPA[j] << " ";
+                found = true;
+            }
+        }
+
+        if (!found)
+            cout << str << "? ";
+    }
+
+    cout << endl;
+}
